@@ -4,31 +4,23 @@ class Main {
         Scanner sc=new Scanner(System.in);
         int n=sc.nextInt();
         sc.nextLine();
-        String[] b=new String[n];
+        char[] b=new char[n];
         
         for(int s=0;s<n;s++){
-            b[s]=sc.nextLine();
+            b[s]=sc.nextLine().charAt(0);
         }
-        boolean foundOdd=false;
         
+        int xor=0;
         
         for(int t=0;t<n;t++){
-            int cnt=0;
-            for(int u=0;u<n;u++){
-                if(b[t].equals(b[u])){
-                    cnt++;
-                }
-            }
-            if(cnt%2!=0){
-                System.out.println(b[t]);
-                foundOdd=true;
-                break;
-            }
-            
+            xor^=b[t];
         }
-        if(!foundOdd) {
+        if(xor!=0){
+            System.out.println((char)xor);
+        }else{
             System.out.println("All are even");
         }
+        
         
     }
 }
